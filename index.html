@@ -130,39 +130,46 @@
     </div>
     <style>
       @media only screen and (max-width: 767px) {
+
+        /* 1. Reset Parent Heights */
+        .home-slider-content,
+        .swiper-container,
+        .swiper-wrapper,
+        .swiper-slide {
+          height: auto !important;
+          min-height: 0 !important;
+          padding-bottom: 0 !important;
+          /* Safety: Remove bottom padding */
+        }
+
         .home-slider-item {
-          /* 1. Ensure the image fits perfectly */
-          background-size: cover !important;
-          background-position: center center !important;
+          width: 100% !important;
+          background-size: 100% auto !important;
           background-repeat: no-repeat !important;
+          background-position: top center !important;
 
-          /* 2. Dynamically calculate height to prevent gaps */
-          /* If your image is 1920x1080 (16:9), use 56.25vw */
-          /* If your image is 1200x800 (3:2), use 66.66vw */
-          height: 60vw !important;
-          min-height: auto !important;
+          /* === THE FIX IS HERE === */
+          /* I lowered this from 56.25vw. */
+          /* If you STILL see a gap, lower this number (try 40vw, 35vw, etc.) */
+          /* If the image gets cut off at the bottom, increase it. */
+          height: 40vw !important;
 
-          /* 3. Remove default padding/margins that might cause gaps */
           padding: 0 !important;
           margin: 0 !important;
         }
 
-        /* Ensure the swiper container doesn't force extra height */
-        .swiper-container,
-        .home-slider-content {
-          height: auto !important;
-        }
-
-        /* Center the text within the new dynamic height */
+        /* Text Adjustments */
         .slider-content-area {
+          height: 100%;
           display: flex;
           align-items: center;
-          height: 100%;
+          justify-content: center;
         }
 
         .home-slider-item .tittle-wrp h2 {
-          font-size: 5vw !important;
-          /* Text scales with screen size */
+          font-size: 4vw !important;
+          line-height: 1.2;
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
           margin: 0;
         }
       }
