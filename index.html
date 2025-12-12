@@ -129,9 +129,9 @@
       </div>
     </div>
     <style>
+      /* --- YOUR EXISTING MOBILE CODE (Keep this as is) --- */
       @media only screen and (max-width: 767px) {
 
-        /* 1. Reset Parent Heights */
         .home-slider-content,
         .swiper-container,
         .swiper-wrapper,
@@ -139,7 +139,6 @@
           height: auto !important;
           min-height: 0 !important;
           padding-bottom: 0 !important;
-          /* Safety: Remove bottom padding */
         }
 
         .home-slider-item {
@@ -147,18 +146,12 @@
           background-size: 100% auto !important;
           background-repeat: no-repeat !important;
           background-position: top center !important;
-
-          /* === THE FIX IS HERE === */
-          /* I lowered this from 56.25vw. */
-          /* If you STILL see a gap, lower this number (try 40vw, 35vw, etc.) */
-          /* If the image gets cut off at the bottom, increase it. */
           height: 40vw !important;
-
+          /* Mobile height */
           padding: 0 !important;
           margin: 0 !important;
         }
 
-        /* Text Adjustments */
         .slider-content-area {
           height: 100%;
           display: flex;
@@ -171,6 +164,27 @@
           line-height: 1.2;
           text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
           margin: 0;
+        }
+      }
+
+      /* --- NEW CODE: DESKTOP / LARGE SCREEN FIX --- */
+      @media only screen and (min-width: 768px) {
+        .home-slider-item {
+          /* 1. SHIFT IMAGE UP:
+             'center top' forces the top of the image to align with the top of the div.
+             This prevents heads or top details from being cropped off. */
+          background-position: center top !important;
+
+          /* 2. REVEAL MORE IMAGE:
+             Increase this height to see more of the picture.
+             Try 700px, 800px, or use '100vh' to fill the whole screen. */
+          height: 80vh !important;
+          min-height: 700PX;
+          /* Prevents it from getting too small on laptops */
+
+          /* Ensure the image covers the area without repeating */
+          background-size: cover !important;
+          background-repeat: no-repeat !important;
         }
       }
     </style>
