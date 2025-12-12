@@ -132,38 +132,52 @@
       /* --- YOUR EXISTING MOBILE CODE (Keep this as is) --- */
       @media only screen and (max-width: 767px) {
 
-        .home-slider-content,
+        /* 1. Remove Top Gap caused by Parent Margins */
+        .home-slider-area,
         .swiper-container,
-        .swiper-wrapper,
         .swiper-slide {
-          height: auto !important;
-          min-height: 0 !important;
-          padding-bottom: 0 !important;
-        }
-
-        .home-slider-item {
-          width: 100% !important;
-          background-size: 100% auto !important;
-          background-repeat: no-repeat !important;
-          background-position: top center !important;
-          height: 40vw !important;
-          /* Mobile height */
           padding: 0 !important;
           margin: 0 !important;
         }
 
+        .home-slider-item {
+          width: 100% !important;
+
+          /* Forces image to fit width perfectly */
+          background-size: 100% auto !important;
+          background-repeat: no-repeat !important;
+          background-position: top center !important;
+
+          /* === THE FIX FOR THE BOTTOM GAP === */
+          /* If you still see a gap at the bottom, LOWER this number.
+         Try: 50vw, 45vw, or 40vw until the white space disappears.
+      */
+          height: 43vw !important;
+
+          /* Removes the "Top Gap" caused by text margins inside */
+          overflow: hidden !important;
+
+          padding: 0 !important;
+          margin: 0 !important;
+          min-height: 0 !important;
+          /* Remove min-height to prevent forcing gaps */
+        }
+
+        /* 2. Fix Text causing gaps */
         .slider-content-area {
           height: 100%;
           display: flex;
           align-items: center;
+          /* Center text vertically */
           justify-content: center;
         }
 
         .home-slider-item .tittle-wrp h2 {
-          font-size: 4vw !important;
+          font-size: 5vw !important;
           line-height: 1.2;
-          text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-          margin: 0;
+          margin: 0 !important;
+          /* Remove text margins */
+          padding: 0 !important;
         }
       }
 
